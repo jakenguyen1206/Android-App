@@ -1,0 +1,14 @@
+﻿OFFLINE
+- Lưu TKB có thể Edit (cập nhật theo tuần, định kỳ)
+	+ Nhắc nhở đi học(Tùy theo người dùng thiết lập)
+	+ Tích hợp Todo list
+- Nhắc nhở người dùng đóng học phí(Hiện thị khoảng thời gian đóng tiền)
+- Xem điểm
+
+ONLINE
+- Download tài liệu môn học
+- Nhận thông báo khi có điểm
+- Các thông báo từ trường
+
+BONUS
+- Phân quyền / Thêm chức năng của quyền admin / Chỉnh sửa được Database (Firebase)
