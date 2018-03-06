@@ -1,0 +1,320 @@
+Animation trong Android
+1.Fade In (Hiệu ứng mờ)
+Sử dụng thẻ <alpha> để định nghĩa giá trị alpha và giá trị alpha sẽ được tăng từ 0 đến 1
+
+	<?xml version="1.0" encoding="utf-8"?>
+		<set xmlns:android="http://schemas.android.com/apk/res/android"
+    			android:fillAfter="true" >
+
+    			<alpha
+        				android:duration="1000"
+        				android:fromAlpha="0.0"
+        				android:interpolator="@android:anim/accelerate_interpolator"
+        				android:toAlpha="1.0" />
+
+		</set>
+
+2.Fade Out (Hiệu ứng mờ)
+Ngược lại với Fade In và giá trị alpha sẽ được thay đổi từ 1 đến 0
+
+	<?xml version="1.0" encoding="utf-8"?>
+		<set xmlns:android="http://schemas.android.com/apk/res/android"
+    			android:fillAfter="true" >
+
+    			<alpha
+        				android:duration="1000"
+        				android:fromAlpha="1.0"
+        				android:interpolator="@android:anim/accelerate_interpolator"
+        				android:toAlpha="0.0" />
+
+		</set>
+
+3.Blink (Hiệu ứng nhấp nháy)
+Là 1 Fade In hoặc Fade Out nhưng được lập đi lập lại. Để thực hiện  chuyển động này chúng ta phải thiết lập android:repeatMode=”reverse” và android:repeatCount=”infinite” 
+
+	<?xml version="1.0" encoding="utf-8"?>
+		<set xmlns:android="http://schemas.android.com/apk/res/android">
+    			<alpha android:fromAlpha="0.0"
+        				android:toAlpha="1.0"
+        				android:interpolator="@android:anim/accelerate_interpolator"
+        				android:duration="600"
+        				android:repeatMode="reverse"
+        				android:repeatCount="infinite"/>
+		</set>
+
+4.Zoom In (Hiệu ứng phóng to)
+Sử dụng thẻ <scale>. Sử dụng pivotX=”50%” và pivotY=”50%” để thực hiện zoom từ trung tâm của đối tượng. Ngoài ra chúng ta cần sử dụng fromXScale và fromYScale để qui định tỷ lệ phóng to đối tượng. Chỉ định giá trị cho các thuộc tính này phải nhỏ hơn toXScale và toYScale
+
+	<?xml version="1.0" encoding="utf-8"?>
+		<set xmlns:android="http://schemas.android.com/apk/res/android"
+    			android:fillAfter="true" >
+
+    			<scale
+        				xmlns:android="http://schemas.android.com/apk/res/android"
+        				android:duration="1000"
+        				android:fromXScale="1"
+        				android:fromYScale="1"
+        				android:pivotX="50%"
+        				android:pivotY="50%"
+        				android:toXScale="3"
+        				android:toYScale="3" >
+    			</scale>
+
+		</set>
+
+5.Zoom Out (Hiệu ứng thu nhỏ)
+Cũng tương tự Zoom Out nhưng giá trị của toXScale và toYScale được chỉ định thấp hơn fromXScale và fromYScale
+
+	<?xml version="1.0" encoding="utf-8"?>
+		<set xmlns:android="http://schemas.android.com/apk/res/android"
+    			android:fillAfter="true" >
+
+    			<scale
+        				xmlns:android="http://schemas.android.com/apk/res/android"
+        				android:duration="1000"
+        				android:fromXScale="1.0"
+        				android:fromYScale="1.0"
+        				android:pivotX="50%"
+        				android:pivotY="50%"
+        				android:toXScale="0.5"
+        				android:toYScale="0.5" >
+    			</scale>
+
+		</set>
+
+6.Rotate (Hiệu ứng quay)
+Hiệu ứng Rotate sử dụng thẻ <rotate> và yêu cầu sử dụng android:fromDegreesvà android:toDegrees để xác định góc quay. Nếu chỉ định giá trị dương cho thuộc tính toDegrees thì sẽ quay theo chiều kim đồng hồ và ngược lại.
+
+	<?xml version="1.0" encoding="utf-8"?>
+		<set xmlns:android="http://schemas.android.com/apk/res/android">
+    			<rotate android:fromDegrees="0"
+        			android:toDegrees="360"
+        			android:pivotX="50%"
+        			android:pivotY="50%"
+        			android:duration="600"
+        			android:repeatMode="restart"
+        			android:repeatCount="infinite"
+        			android:interpolator="@android:anim/cycle_interpolator"/>
+
+		</set>
+
+7.Move (Hiệu ứng di chuyển)
+Để thay đổi vị trí của đối tượng chúng ta sử dụng thẻ <translate>. Sử dụng các thuộc tính android:fromXDelta, android:fromYDelta cho hướng X và android:toXDelta, android:toYDelta cho hướng Y.
+
+	<?xml version="1.0" encoding="utf-8"?>
+		<set
+    			xmlns:android="http://schemas.android.com/apk/res/android"
+    			android:interpolator="@android:anim/linear_interpolator"
+    			android:fillAfter="true">
+
+    			<translate
+        				android:fromXDelta="0%p"
+        				android:toXDelta="75%p"
+        				android:duration="800" />
+		</set>
+
+
+8.Slide Up (Hiệu ứng trượt lên)
+Sử dụng thẻ <scale> kết hợp với 2 thuộc tính android:fromYScale=”1.0″ và android:toYScale=”0.0″
+
+	<?xml version="1.0" encoding="utf-8"?>
+		<set xmlns:android="http://schemas.android.com/apk/res/android"
+    			android:fillAfter="true" >
+
+    			<scale
+        				android:duration="500"
+        				android:fromXScale="1.0"
+        				android:fromYScale="1.0"
+        				android:interpolator="@android:anim/linear_interpolator"
+        				android:toXScale="1.0"
+        				android:toYScale="0.0" />
+
+		</set>
+
+9.Slide Down (Hiệu ứng trượt xuống)
+Ngược lại với Slide Up, thiết lập giá trị cho 2 thuộc tính android:fromYScale=”0.0″ và android:toYScale=”1.0″
+
+	<?xml version="1.0" encoding="utf-8"?>
+		<set xmlns:android="http://schemas.android.com/apk/res/android"
+    			android:fillAfter="true">
+
+    			<scale
+        				android:duration="500"
+        				android:fromXScale="1.0"
+        				android:fromYScale="0.0"
+        				android:interpolator="@android:anim/linear_interpolator"
+        				android:toXScale="1.0"
+        				android:toYScale="1.0" />
+
+		</set>
+
+10.equential Animation (Hiệu ứng thực hiện tuần tự)
+Nếu muốn thực hiện nhiều animation một cách tuần tự, chúng ta phải sử dụng android:startOffset để thiết lập thời gian trễ. Cách đơn giản để tính toán giá trị cho android:startOffset là cộng giá trị android:duration của hiệu ứng hiện tại với giá trị android:startOffset của hiệu ứng trước
+
+	<?xml version="1.0" encoding="utf-8"?>
+		<set xmlns:android="http://schemas.android.com/apk/res/android"
+    			android:fillAfter="true"
+    			android:interpolator="@android:anim/linear_interpolator" >
+
+    			<!-- Use startOffset to give delay between animations -->
+
+    			<!-- Move -->
+    			<translate
+        				android:duration="800"
+        				android:fillAfter="true"
+        				android:fromXDelta="0%p"
+        				android:startOffset="300"
+        				android:toXDelta="75%p" />
+    			<translate
+        				android:duration="800"
+        				android:fillAfter="true"
+        				android:fromYDelta="0%p"
+        				android:startOffset="1100"
+        				android:toYDelta="70%p" />
+    			<translate
+        				android:duration="800"
+        				android:fillAfter="true"
+        				android:fromXDelta="0%p"
+        				android:startOffset="1900"
+        				android:toXDelta="-75%p" />
+    			<translate
+        				android:duration="800"
+        				android:fillAfter="true"
+        				android:fromYDelta="0%p"
+        				android:startOffset="2700"
+        				android:toYDelta="-70%p" />
+
+    			<!-- Rotate 360 degrees -->
+    			<rotate
+        				android:duration="1000"
+        				android:fromDegrees="0"
+        				android:interpolator="@android:anim/cycle_interpolator"
+        				android:pivotX="50%"
+        				android:pivotY="50%"
+        				android:startOffset="3700"
+        				android:repeatCount="infinite"
+        				android:repeatMode="restart"
+        				android:toDegrees="360" />
+
+		</set>
+
+11.Together Animation (Hiệu ứng thực hiện đồng thời)
+Viết tất cả các hiệu ứng mà không chỉ định android:startOffset
+
+	<?xml version="1.0" encoding="utf-8"?>
+		<set xmlns:android="http://schemas.android.com/apk/res/android"
+    			android:fillAfter="true"
+    			android:interpolator="@android:anim/linear_interpolator" >
+
+    			<scale
+        				xmlns:android="http://schemas.android.com/apk/res/android"
+        				android:duration="4000"
+        				android:fromXScale="1"
+        				android:fromYScale="1"
+        				android:pivotX="50%"
+        				android:pivotY="50%"
+        				android:toXScale="4"
+        				android:toYScale="4" >
+    			</scale>
+
+    			<!-- Rotate 180 degrees -->
+    			<rotate
+        				android:duration="500"
+        				android:fromDegrees="0"
+        				android:pivotX="50%"
+        				android:pivotY="50%"
+        				android:repeatCount="infinite"
+        				android:repeatMode="restart"
+        				android:toDegrees="360" />
+
+		</set>
+
+
+=======================================================================
+
+Animation trong android – Các bước thực hiện
+
+Bước 1: Tạo tập tin xml định nghĩa animation (Tập tin này được đặt trong thư mục animdưới thư mục res (res ⇒ anim ⇒ xml))
+	1/ Tạo thư mục anim bằng cách chuột phải thư mục res -> chọn New -> chọn Directory
+	2/ Tạo tập tin xml bằng cách chuột phải thư mục anim -> chọn New -> chọn Animation resource file
+
+Bước 2: Nạp animation
+	Tại activity tạo một đối tượng của lớp Animation và nạp tập tin xml sử dụng phương thức loadAnimation() của lớp AnimationUtils
+
+Bước 3: Thiết lập sự kiện (Tuỳ chọn)
+	Nếu bạn muốn xử lý các sự kiện như start, end và repeat, bạn phải cài đặt giao diện AnimationListener cho activity của bạn. Lưu ý 		bước này là tuỳ chọn, bạn có thể bỏ qua nếu không cần thiết.
+
+Bước 4: Bắt đầu animation
+	Chúng ta có thể bắt đầu một animation bất cứ khi nào mình muốn bằng cách gọi phương thức startAnimation() trên bất kỳ thành 		phần UI nào mà chúng ta muốn thiết lập animation
+
+===================================
+
+Ví dụ thiết lập hiệu ứng Fade In cho thành phần UI là TextView
+
+Bước 1: Tạo tập tin fade_in.xml
+		<?xml version="1.0" encoding="utf-8"?>
+			<set xmlns:android="http://schemas.android.com/apk/res/android"
+    				android:fillAfter="true" >
+
+    				<alpha
+        					android:duration="1000"
+        					android:fromAlpha="0.0"
+        					android:interpolator="@android:anim/accelerate_interpolator"
+        					android:toAlpha="1.0" />
+
+			</set>
+
+Bước 2, 3 & 4: Tạo activity SampleAnimationActivity, nạp tập tin xml, đăng ký sự kiện và bắt đầu animation
+
+
+Viết xử lý
+	public class SampleAnimationActivity extends AppCompatActivity implements Animation.AnimationListener{
+    		TextView txtMessage;
+    		// Animation
+    		Animation animFadein;
+
+    		@Override
+    		protected void onCreate(Bundle savedInstanceState) {
+        			super.onCreate(savedInstanceState);
+        			setContentView(R.layout.activity_sample_animation);
+
+        			txtMessage = (TextView) findViewById(R.id.txtFadeIn);
+
+        			// load the animation
+        			animFadein = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+
+        			// set animation listener
+        			animFadein.setAnimationListener(this);
+   		 }
+
+    		public void startAnimation(View view){
+        			// start the animation
+        			txtMessage.startAnimation(animFadein);
+   		 }
+
+    		@Override
+    		public void onAnimationStart(Animation animation) {
+        			// Animation started
+    		}
+
+    		@Override
+    		public void onAnimationEnd(Animation animation) {
+        			Toast.makeText(getApplicationContext(), "Animation Stopped", Toast.LENGTH_SHORT).show();
+    		}
+
+    		@Override
+    		public void onAnimationRepeat(Animation animation) {
+        			// Animation is repeating
+    		}
+	}
+
+
+
+
+
+
+
+
+
+
+
